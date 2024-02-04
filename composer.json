@@ -1,0 +1,18 @@
+{
+    "name": "jedei/estoque",
+    "description": "sistema de estoque",
+    "autoload": {
+        "psr-4": {
+            "Estoque\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jedeiasLuiz",
+            "email": "jedeiasluiz3@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "10.4"
+    }
+}
