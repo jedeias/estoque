@@ -155,3 +155,5 @@ DELIMITER ;
 
 SELECT * FROM location;
 SELECT * FROM sales;
+
+
