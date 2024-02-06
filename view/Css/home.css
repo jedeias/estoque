@@ -1,0 +1,249 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all .2s linear;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background:#333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: consolas;
+}
+
+
+header{
+    position: fixed;
+    top: 0;
+    left: -120%;
+    z-index: 1000;
+    height: 100%;
+    width: 30rem;
+    background: #282828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+}
+
+header.toggle{
+    left: 0;
+
+}
+
+header > .navbar{
+    width: 100%;
+}
+
+header > .navbar > ul{
+    list-style: none;
+    padding: 1rem 3rem;
+}
+
+header > .navbar > ul > li > a{
+    display: block;
+    padding: 0.5rem;
+    margin: 1.5rem 0;
+    background: #333;
+    color: #fff;
+    font-size: 2rem;
+    border-radius: 5rem;
+    box-shadow: 0.2rem 0.2rem 0.2rem #fff;
+}
+
+header > .navbar > ul > li > a:hover{
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0.2rem 0.2rem 0.2rem  #000000;
+}
+
+
+#menu{
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    padding: 1.5rem 1.5rem;
+    z-index: 1000;
+}
+
+
+.container{
+    width: 1000px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+.container  .card{
+    position: relative;
+    cursor: pointer;
+    padding-left: 19px;
+    
+}
+
+.container  .card .face{
+    width: 320px;
+    height: 200px;
+    transition: 0.5s;
+}
+
+.container  .card  .face.facel{
+    position: relative;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container .card:hover .face.facel{
+    background: #3b103d;
+    transform: translateY(0);
+    border: none;
+
+}
+
+.container .card .face.facel .content{
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.container .card:hover .face.facel .content{
+    opacity: 1;
+}
+
+.container .card .face.facel .content img{
+    max-width: 100px;
+}
+
+.container .card .face.facel .content h3{
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.container .card .face.face2{
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    transform: translateY(-100.1px);
+}
+
+.container .card:hover .face.face2{
+    transform: translateY(0);
+}
+
+.container .card .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+}
+
+.container .card .face.face2 .content:hover{
+    padding-top: 10px;
+}
+
+
+
+.container .card .face.face2 .content a{
+    margin: 15px 0 0;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.container .card .face.face2 .content a:hover{
+    background: #333;
+    color: #fff;
+}
+
+
+@media (max-width:1200px) {
+    .container{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header{
+        width: 60%;
+    }
+   .navbar{
+    margin: 0 auto;
+   }
+
+   .face.facel{
+    width: 500px;
+   }
+
+   header{
+    left: -120%;
+   }
+
+   #menu{
+    display: block;
+   }
+
+   header.toggle{
+    left: 0;
+   }
+
+}
+
+
+
+@media(max-width:991px){
+    header{
+     left: -120%;
+    }
+ 
+    #menu{
+     display: block;
+    }
+ 
+    header.toggle{
+     left: 0;
+    }
+ 
+    
+ }
+ 
+ @media(max-width:746px){
+
+    header{
+        width: 100%;
+    }
+
+    .navbar{
+        margin: 0 auto;
+    }
+
+  }
+ 
+ @media(max-width:400px){
+     header{
+      width: 100vw;
+     }
+ 
+ 
+     
+  }
