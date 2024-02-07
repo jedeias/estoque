@@ -6,6 +6,8 @@ use Estoque\Core\Entities\Products\IProducts;
 use Estoque\Core\Entities\Location\ILocation;
 
 class Sales implements ISales{
+
+    private $primaryKey;
     private int $amount;
     private float $sales;
     private IProducts $products;
@@ -62,6 +64,18 @@ class Sales implements ISales{
     public function setLocation(ILocation $location): self
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    public function getPrimaryKey()
+    {
+        return $this->primaryKey;
+    }
+
+    public function setPrimaryKey($primaryKey): self
+    {
+        $this->primaryKey = $primaryKey;
 
         return $this;
     }

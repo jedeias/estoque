@@ -5,6 +5,7 @@ namespace Estoque\Core\Entities\Products;
 use Estoque\Core\Entities\Products\IProducts;
 
 class Products implements IProducts{
+    private $primaryKey;
     private string $name;
     private float $price;
     private string $mark;
@@ -61,6 +62,18 @@ class Products implements IProducts{
     public function setValidate(string $validate): self
     {
         $this->validate = $validate;
+
+        return $this;
+    }
+
+    public function getPrimaryKey()
+    {
+        return $this->primaryKey;
+    }
+
+    public function setPrimaryKey($primaryKey): self
+    {
+        $this->primaryKey = $primaryKey;
 
         return $this;
     }

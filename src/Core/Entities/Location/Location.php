@@ -4,6 +4,7 @@ namespace Estoque\Core\Entities\Location;
 use Estoque\Core\Entities\Location\ILocation;
 
 class Location implements ILocation{
+    private $primaryKey;
     private $local;
     private $productsKey;
     private $amount;
@@ -61,6 +62,18 @@ class Location implements ILocation{
     public function setProductsKey($productsKey): self
     {
         $this->productsKey = $productsKey;
+
+        return $this;
+    }
+
+    public function getPrimaryKey()
+    {
+        return $this->primaryKey;
+    }
+
+    public function setPrimaryKey($primaryKey): self
+    {
+        $this->primaryKey = $primaryKey;
 
         return $this;
     }

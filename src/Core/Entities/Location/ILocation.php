@@ -11,4 +11,6 @@ Interface ILocation{
     function setAmount($amount):self;
     function getEntryDate();
     function setEntryDate($date):self;
+    function getPrimaryKey();
+    function setPrimaryKey($primaryKey);
 }

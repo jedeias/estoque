@@ -11,4 +11,6 @@ interface IProducts{
     function setMark(string $mark) : self;
     function getValidate() : string;
     function setValidate(string $validator) : self;
+    function getPrimaryKey();
+    function setPrimaryKey($primaryKey);
 }

@@ -80,6 +80,33 @@ SELECT * FROM user;
 
 DELIMITER $$
 
+CREATE PROCEDURE updateUser(
+
+    IN _userId INT,
+    IN _name VARCHAR(255),
+    IN _email VARCHAR(255),
+    IN _password VARCHAR(255),
+    IN _type ENUM("Administrator",'Assistant')
+
+)
+
+BEGIN
+
+    UPDATE user 
+    SET 
+        name = _name, 
+        email = _email, 
+        password = _password, 
+        type = _type
+    WHERE pkUser = _userId;
+
+END $$
+DELIMITER ;
+
+CALL updateUser(1, 'jorgeNew', "jorge@mail.com", "password", "Administrator");
+
+DELIMITER $$
+
 CREATE PROCEDURE insertProducts(
 
     IN _name VARCHAR(255),
@@ -90,6 +117,7 @@ CREATE PROCEDURE insertProducts(
 )
 
 BEGIN
+    START TRANSACTION;
 
     INSERT INTO products (name, price, mark, validate) 
     VALUES (_name, _price, _mark, _validate);
@@ -156,4 +184,91 @@ DELIMITER ;
 SELECT * FROM location;
 SELECT * FROM sales;
 
+DELIMITER $$
 
+CREATE PROCEDURE getUserById(
+    IN _pk INT
+)
+BEGIN
+
+    START TRANSACTION;
+
+    SELECT * FROM user WHERE pkUser = _pk;
+
+    COMMIT;
+END $$
+DELIMITER ;
+
+call getUserById(1);
+
+
+DELIMITER $$
+
+CREATE PROCEDURE getUserByEmail(
+    IN _Email VARCHAR(255)
+)
+BEGIN
+
+    START TRANSACTION;
+
+    SELECT * FROM user WHERE Email = _email;
+
+    COMMIT;
+END $$
+DELIMITER ;
+
+call getUserByEmail('jorge@mail.com');
+
+-- INSERT INTO logs (alterTable, fkAlterItem, alterColumn, oldValue, newValue)
+-- VALUES ('users', 1, 'name', 'John', 'Jonathan');
+
+DELIMITER $$
+
+CREATE PROCEDURE getProductsById(
+    IN _pk INT
+)
+BEGIN
+
+    START TRANSACTION;
+
+    SELECT * FROM products WHERE pkProduct = _pk;
+
+    COMMIT;
+END $$
+DELIMITER ;
+
+call getProductsById(1);
+
+DELIMITER $$
+
+CREATE PROCEDURE getLocationById(
+    IN _pk INT
+)
+BEGIN
+
+    START TRANSACTION;
+
+    SELECT * FROM location WHERE pkLocation = _pk;
+
+    COMMIT;
+END $$
+DELIMITER ;
+
+call getLocationById(1);
+
+DELIMITER $$
+
+CREATE PROCEDURE getSalesById(
+    IN _pk INT
+)
+BEGIN
+
+    START TRANSACTION;
+
+    SELECT * FROM sales WHERE sales = _pk;
+
+    COMMIT;
+END $$
+DELIMITER ;
+
+call getSalesById(1);

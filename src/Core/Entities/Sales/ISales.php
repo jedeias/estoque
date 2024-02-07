@@ -15,4 +15,6 @@ interface ISales {
     function setProducts(IProducts $product) : self;
     function getLocation() : ILocation;
     function setLocation(ILocation $location) : self;
+    function getPrimaryKey();
+    function setPrimaryKey($primaryKey);
 }

@@ -32,6 +32,10 @@ class Testlocation extends TestCase{
         $this->assertEquals($amount, $this->location->getAmount());
         $this->assertEquals($date, $this->location->getEntryDate());
         
+        $primaryKey = 1;
+        $this->location->setPrimaryKey($primaryKey);
+        $this->assertEquals($primaryKey, $this->location->getPrimaryKey());
+        
         $date = "2024-03-02";
         
         $this->location->setEntryDate($date);

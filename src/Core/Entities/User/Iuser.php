@@ -11,4 +11,6 @@ Interface Iuser{
     function setPassword($password);
     function getType();
     function setType($type);
+    function getPrimaryKey();
+    function setPrimaryKey($primaryKey);
 }

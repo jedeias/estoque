@@ -36,6 +36,10 @@ Class TestUser extends TestCase{
         $this->user->setType("ass");
         $this->assertEquals($type2, $this->user->getType());
 
+        $primaryKey = 1;
+        $this->user->setPrimaryKey($primaryKey);
+        $this->assertEquals($primaryKey, $this->user->getPrimaryKey());
+
     }
 
 }

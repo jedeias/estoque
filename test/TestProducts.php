@@ -29,6 +29,10 @@ class TestProducts extends TestCase{
         $this->assertEquals($mark, $this->products->getMark());
         $this->assertEquals($validate, $this->products->getValidate());
 
+        $primaryKey = 1;
+        $this->products->setPrimaryKey($primaryKey);
+        $this->assertEquals($primaryKey, $this->products->getPrimaryKey());
+        
     }
 
 }

@@ -33,6 +33,10 @@ class TestSales extends TestCase{
         $this->assertEquals($amount, $this->sales->getAmount());
         $this->assertEquals($sales, $this->sales->getSales());
 
+        $primaryKey = 1;
+        $this->sales->setPrimaryKey($primaryKey);
+        $this->assertEquals($primaryKey, $this->sales->getPrimaryKey());
+
     }
 }
 

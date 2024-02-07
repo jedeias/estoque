@@ -5,11 +5,19 @@ use Estoque\Core\Entities\User\Iuser;
 
 class User implements Iuser{
 
+    private $primaryKey;
     private $name;
     private $email;
     private $password;
     private $type;
 
+    public function __construct($name, $email, $password,  $type) {
+        $this->setName($name);
+        $this->setEmail($email);
+        $this->setPassword($password);
+        $this->setType($type);
+    }
+    
     public function getName()
     {
         return $this->name;
@@ -55,6 +63,18 @@ class User implements Iuser{
         }else{
             $this->type = "Assistant";
         }
+
+        return $this;
+    }
+
+    public function getPrimaryKey()
+    {
+        return $this->primaryKey;
+    }
+
+    public function setPrimaryKey($primaryKey): self
+    {
+        $this->primaryKey = $primaryKey;
 
         return $this;
     }
