@@ -4,27 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <script src="view/js/login.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="view/js/login.js" defer></script>
     <link rel="stylesheet" href="./view/Css/index.css">
 </head>
 <body>
 
     <div class="container">
 
-        <form action="" method="post" enctype="multipart/form-data">
+        <form id="POST" action="" method="post" enctype="multipart/form-data">
             <h2>Login</h2>
-            <input type="email" placeholder="E-mail">
-            <input type="password" placeholder="PassWord">
-            <button type="submit">Send</button>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <input type="password" id="password" name="password" placeholder="PassWord" required>
+            <button type="submit" form="POST" class="sendRequest">Send</button>
 
         </form>
 
     </div>
-    
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="app/js/ajax.js"></script>
-
 
 </body>
 </html>

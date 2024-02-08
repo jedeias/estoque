@@ -48,7 +48,7 @@ class UserRepository implements IUserRepository{
             if (!$success) {
                 return ['error' => 'execute failed'];
             }
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (!$result) {
                 return ['error' => 'no result'];
             }
