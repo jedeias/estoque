@@ -28,6 +28,6 @@
          </thead>
          <tbody class="elements"></tbody>
    </table>
-
+   
 </body>
 </html>

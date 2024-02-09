@@ -23,6 +23,19 @@
       </select>
 
       <button type="submit">Send</button>
-   </form>   
+   </form>
+
+   <section class="tabela">
+      <table border="1 px solid">
+            <thead>
+               <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Type</th>
+               </tr>
+            </thead>
+            <tbody class="elements"></tbody>
+      </table>
+
 </body>
 </html>
