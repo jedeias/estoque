@@ -19,7 +19,35 @@ $("#POST").submit(function(e) {
         dataType: "json",
     }).done(function(response) {
         console.log(response);
+
+        if(response == "success") {
+
+            window.location.href = "/estoque/view/index.php";
+
+        }
+
+        let responseUser = document.createElement("div");
+
+        responseUser.className = "response";
+
+        let body = document.querySelector("body");
+
+        body.appendChild(responseUser);
+
+        $("responseUser").html("password or email is worng");
+
     }).fail(function(xhr, status, error) {
         console.log(error);
+        let responseUser = document.createElement("div");
+
+        responseUser.className = "response";
+
+        let body = document.querySelector("body");
+        let container = document.querySelector(".container");
+
+        
+        body.appendChild(responseUser);
+
+        $(".response").html("password or email is worng");
     });
 });

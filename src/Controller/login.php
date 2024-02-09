@@ -9,24 +9,17 @@ header("Content-Type: application/json");
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-var_dump($_POST);
-$array = array(
-    '{"email":"demo@demo_com","password":"123456789"}' => ''
-);
+$data = json_decode(file_get_contents("php://input"));
 
-$jsonString = key($array);
+$email = $data->email;
+$password = $data->password;
 
-$data = json_decode($jsonString, true);
+//var_dump($data);
 
-var_dump($data);
-
-if (empty($data['email']) || empty($data['password'])) {
+if (empty($email) || empty($password)) {
     echo json_encode("Send values not found");
     exit;
 }
-
-$email = $data['email'];
-$password = $data['password'];
 
 $userRepository = new UserRepository();
 $authentication = new Authentication($userRepository);

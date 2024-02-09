@@ -1,3 +1,25 @@
+<?php
+
+require_once("../vendor/autoload.php");
+
+use Estoque\Core\UseCases\Session\Session;
+
+$session = new Session();
+
+if (empty($_SESSION) && session_id() !== "user") {
+    header("Location: ../");
+    exit();
+}
+
+
+$serializedUser = $session->get("serializeUser");
+$user = unserialize($serializedUser);
+
+echo $user->getName();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="Pt-Br">
 <head>
@@ -13,7 +35,7 @@
     
         <nav class="navbar">
             <ul>
-                <li><a href="/index.html">Index</a></li>
+                <li><a href='exit.php'>Exit</a></li>
                 <li><a href="./html/logs.html">Logs</a></li>
                 <li><a href="./html/matriz.html">Matriz</a></li>
                 <li><a href="./html/sales.html">Sales</a></li>

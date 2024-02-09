@@ -4,6 +4,7 @@ namespace Estoque\Core\UseCases;
 
 use Estoque\Core\Entities\User\User;
 use Estoque\Core\Entities\Repository\IUserRepository;
+use Estoque\Core\UseCases\Session\Session;
 
 class Authentication {
 
@@ -19,13 +20,13 @@ class Authentication {
 
         if ($dataUser && $email == $dataUser["email"] && $dataUser["password"] == $password) {
 
-            session_start();
+            $session = new Session();
 
             $user = new User($dataUser['name'], $dataUser['email'], $dataUser['password'], $dataUser['type']);
 
             $serialize = serialize($user);
 
-            $_SESSION["serializeUser"] = $serialize;
+            $session->set("serializeUser", $serialize);
 
             return "success";
 
