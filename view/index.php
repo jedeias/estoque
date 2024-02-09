@@ -18,7 +18,7 @@ $user = unserialize($serializedUser);
 echo $user->getName();
 
 ?>
-
+ 
 
 <!DOCTYPE html>
 <html lang="Pt-Br">
