@@ -36,10 +36,10 @@ echo $user->getName();
         <nav class="navbar">
             <ul>
                 <li><a href='exit.php'>Exit</a></li>
-                <li><a href="./html/logs.html">Logs</a></li>
-                <li><a href="./html/matriz.html">Matriz</a></li>
-                <li><a href="./html/sales.html">Sales</a></li>
-                <li><a href="./html/user.html">User</a></li>
+                <li><a href="./logs.html">Logs</a></li>
+                <li><a href="./matriz.html">Matriz</a></li>
+                <li><a href="./sales.html">Sales</a></li>
+                <li><a href="./user.html">User</a></li>
             </ul>
         </nav>
     </header>
