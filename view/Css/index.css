@@ -54,6 +54,8 @@ button{
     box-shadow: 0.2rem 0.3rem 0.4rem #000;
 }
 
+
+
 button:hover{
     background: rgb(183, 4, 183);
 }
@@ -61,4 +63,10 @@ button:hover{
 h2{
     text-align: center;
 
+}
+
+
+.response{
+    position: absolute; top: 51%; left: 48%; transform: translate(-50%, -50%);
+    
 }
