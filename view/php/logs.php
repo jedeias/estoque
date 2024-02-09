@@ -56,4 +56,4 @@
    <script src="/view/js/home.js"></script>
  </body>
  </html>
->>>>>>> b2ceedd17f2c3bfd126798ef78c0315bbe02a72f:view/html/logs.html
+
