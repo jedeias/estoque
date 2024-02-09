@@ -2,6 +2,7 @@
 
 namespace Estoque\Core\Entities\Repository;
 
-interface ILogsRepository extends IRepository{
-    
+interface ILogsRepository{
+    function getAll() : array;
+
 }

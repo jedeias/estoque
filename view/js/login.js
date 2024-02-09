@@ -38,16 +38,20 @@ $("#POST").submit(function(e) {
 
     }).fail(function(xhr, status, error) {
         console.log(error);
-        let responseUser = document.createElement("div");
-
-        responseUser.className = "response";
-
-        let body = document.querySelector("body");
-        let container = document.querySelector(".container");
-
-        
-        body.appendChild(responseUser);
-
-        $(".response").html("password or email is worng");
+        showErrorMessage();
     });
 });
+
+function showErrorMessage() {
+    let existingResponse = document.querySelector(".response");
+    
+    if (!existingResponse) {
+        let responseUser = document.createElement("div");
+        responseUser.className = "response";
+        
+        let body = document.querySelector("body");
+        body.appendChild(responseUser);
+        
+        $(".response").html("Password or email is wrong");
+    }
+}
