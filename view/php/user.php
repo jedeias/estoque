@@ -60,9 +60,6 @@ $user = unserialize($serializedUser);
                </tr>
             </thead>
 
-            <tr class="elements">
-
-            </tr>
             <tbody class="elements"></tbody>
       </table>
    </section>

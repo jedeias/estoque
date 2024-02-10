@@ -1,28 +1,3 @@
-// $("#POST").submit(function(e){
-//     e.preventDefault();
-
-//     let name = $("#name").val();
-//     let email = $("#email").val();
-//     let password = $("#password").val();
-//     let type = $("#type").val();
-    
-
-//     $.ajax({
-//         url: "/estoque/src/Controller/User/UserRegister.php",
-//         method: "POST",
-//         data: JSON.stringify({
-//             "name": name,
-//             "email": email,
-//             "password": password,
-//             "type": type,
-//         }),
-//         dataType: "json",
-//     }).done(function(response) {
-//         console.log(response);
-//     }).fail(function(xhr, status, error) {
-//         console.log(error);
-//     });
-// });
 $(document).ready(function() {
     var formulario = $('#POST');
 
@@ -44,12 +19,44 @@ $(document).ready(function() {
                 type: type
             },
             dataType: 'json',
-            success: function(response) {
-                console.log(response);
+            success:function(){
+                request();
             },
             error: function(xhr, status, error) {
                 console.log(error);
+                request();
             }
         });
     });
 });
+
+
+function request() {
+    $.ajax({
+        url: '/estoque/src/Controller/User/UserRequest.php',
+        success: function(request) {
+            let tabela = $('.elements');
+            tabela.empty();
+
+            let existingNames = {};
+
+            request.forEach(element => {
+                if (!existingNames[element.name]) {
+                    let tr = $('<tr>');
+                    tr.html(`
+                        <td>${element.name}</td>
+                        <td>${element.email}</td>
+                        <td>${element.type}</td>
+                    `);
+                    tabela.append(tr);
+                    existingNames[element.name] = true; 
+                }
+            });
+        },
+        error: function(xhr, status, error) {
+            console.log(error);
+        }
+    });
+}
+
+request();
