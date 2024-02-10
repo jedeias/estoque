@@ -1,15 +1,36 @@
+<?php
+
+require_once("../../vendor/autoload.php");
+
+use Estoque\Core\UseCases\Session\Session;
+
+$session = new Session();
+
+if (empty($_SESSION) && session_id() !== "user") {
+    header("Location: ../");
+    exit();
+}
+
+$serializedUser = $session->get("serializeUser");
+$user = unserialize($serializedUser);
+
+?>
+
 <!DOCTYPE html>
 <html lang="Pt-Br">
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="/view/Css/user.css">
+   <div id="menu" class="fas fa-bars"></div>
+   <link rel="stylesheet" href="../css/user.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <script src="../js/user.js"></script>
    <title>User</title>
 </head>
 <body>
    
    <div class="container">
-      <form action="" method="post">
+      <form id="POST" action="pagina_temporaria.php" method="post">
          <h1>Cadastro de Usúario</h1>
 
          <label for="name"></label>
@@ -25,7 +46,7 @@
             <option value="Administrator">Administrator</option>
             <option value="Assistant">Assistant</option>
          </select>
-         <button type="submit">Send</button>
+         <button type="submit" form="POST">Send</button>
       </form>
    </div>
 
@@ -39,13 +60,11 @@
                </tr>
             </thead>
 
-            <tr>
-               <td>elemen</td>
-               <td>elemen</td>
-               <td>elemen</td>
+            <tr class="elements">
+
             </tr>
             <tbody class="elements"></tbody>
       </table>
-
+   </section>
 </body>
 </html>

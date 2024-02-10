@@ -6,6 +6,7 @@ use Estoque\Core\Entities\Repository\IUserRepository;
 use Estoque\Core\Entities\User\IUser;
 use Estoque\infra\Data\Sql;
 use PDO;
+
 class UserRepository implements IUserRepository{
 
     private IUser $user;

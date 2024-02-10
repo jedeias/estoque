@@ -4,6 +4,24 @@
 
 -->
 
+<?php
+
+require_once("../../vendor/autoload.php");
+
+use Estoque\Core\UseCases\Session\Session;
+
+$session = new Session();
+
+if (empty($_SESSION) && session_id() !== "user") {
+    header("Location: ../");
+    exit();
+}
+
+$serializedUser = $session->get("serializeUser");
+$user = unserialize($serializedUser);
+
+?>
+
 <!DOCTYPE html>
  <html lang="Pt-Br">
  <head>
