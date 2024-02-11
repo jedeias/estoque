@@ -43,7 +43,8 @@ class LocationRepository implements ILocationRepository{
 
     public function getAll() : array {
         try{
-            $stmt = $this->sql->getConnect()->prepare("SELECT * FROM location");
+            $stmt = $this->sql->getConnect()->prepare(  "SELECT * FROM location
+                                                        INNER JOIN products ON location.fkProduct = products.pkProduct");
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

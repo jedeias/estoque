@@ -28,9 +28,3 @@ echo json_encode("recebido");
 $repository = new UserRepository();
 
 $repository->save($user);
-
-$repository = new UserRepository();
-
-$userList = $repository->getAll();
-
-echo json_encode($userList);
