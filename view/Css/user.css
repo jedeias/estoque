@@ -47,7 +47,7 @@ input:focus::-webkit-input-placeholder{
 .container select,
 .container button {
     width: 90%;
-    height: 30px;
+    height: 35px;
     margin-top: 15px;
     padding: 8px;
     border: 1px solid #333;

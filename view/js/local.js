@@ -9,7 +9,7 @@ $(document).ready(function() {
         var amount = $('#amount').val();
         
         $.ajax({
-            url: '/estoque/src/Controller/Local/LocalRegist.php',
+            url: '/estoque/src/Controller/Local/LocalRegister.php',
             method: 'POST',
             data: {
                 "local": local,

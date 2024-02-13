@@ -9,11 +9,12 @@ header("Content-Type: application/json");
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-
 $name = $_POST["name"];
 $email = $_POST["email"];
 $password = $_POST["password"];
 $type = $_POST["type"];
+
+
 
 if (empty($email) || empty($password) || empty($type) || empty($name)) {
     echo json_encode("Send values not found");
@@ -23,8 +24,11 @@ if (empty($email) || empty($password) || empty($type) || empty($name)) {
 $user = new User($name, $email, $password, $type);
 
 echo json_encode(print_r($user));
-echo json_encode("recebido");
 
 $repository = new UserRepository();
 
-$repository->save($user);
+$status = $repository->save($user);
+
+echo json_encode(var_dump($status));
+
+// echo json_encode("recebido");

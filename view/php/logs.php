@@ -21,8 +21,9 @@ $user = unserialize($serializedUser);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/view/Css/logs.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/logs.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   <script src="../js/logs.js"></script>
     <title>Logs</title>
  </head>
  <body>
@@ -47,24 +48,16 @@ $user = unserialize($serializedUser);
 
    <section class="tabela">
 
-      <table border="1px solid ">
+      <table border="1px solid " >
          <tr>
             <th>Alteration</th>
             <th>Camp</th>
-            <th>Old Value</th>
             <th>New Value</th>
             <th>Date</th>
          </tr>
-         <tr>
-            <td>elements</td>
-            <td>elements</td>
-            <td>elements</td>
-            <td>elements</td>
-            <td>elements</td>
-            
-         </tr>
 
-         
+         <tbody class="elements"></tbody>
+
       </table>
 
    </section>

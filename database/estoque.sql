@@ -43,14 +43,12 @@ create table sales(
 CREATE TABLE logs (
     pkLog INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     alterTable VARCHAR(255) NOT NULL,
-    fkAlterItem INT NOT NULL,
     alterColumn VARCHAR(255) NOT NULL,
-    oldValue VARCHAR(255) NOT NULL,
     newValue VARCHAR(255) NOT NULL,
-    dateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (fkAlterItem) REFERENCES user(pkUser),
-    FOREIGN KEY (fkAlterItem) REFERENCES products(pkProduct),
-    FOREIGN KEY (fkAlterItem) REFERENCES location(pkLocation)
+    dateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    -- FOREIGN KEY (fkAlterItem) REFERENCES user(pkUser),
+    -- FOREIGN KEY (fkAlterItem) REFERENCES products(pkProduct),
+    -- FOREIGN KEY (fkAlterItem) REFERENCES location(pkLocation)
 ) CHARACTER SET utf8;
 
 DELIMITER $$
@@ -272,3 +270,69 @@ END $$
 DELIMITER ;
 
 call getSalesById(1);
+
+DELIMITER //
+CREATE TRIGGER user_after_insert
+AFTER INSERT
+ON user FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
+    VALUES ('user', 'name', NEW.name, NOW());
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER user_after_update
+AFTER UPDATE
+ON user FOR EACH ROW
+BEGIN
+    IF NEW.name <> OLD.name THEN
+        INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
+        VALUES ('user', 'name', NEW.name, NOW());
+    END IF;
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER user_after_delete
+AFTER DELETE
+ON user FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
+    VALUES ('user', 'name', OLD.name, NOW());
+END; //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER stock_after_insert
+AFTER INSERT
+ON location FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
+    VALUES ('location', 'local', NEW.local, NOW());
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER stock_after_update
+AFTER UPDATE
+ON location FOR EACH ROW
+BEGIN
+    IF NEW.local <> OLD.local THEN
+        INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
+        VALUES ('location', 'local', NEW.local, NOW());
+    END IF;
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER stock_after_delete
+AFTER DELETE
+ON location FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
+    VALUES ('location', 'local', OLD.local, NOW());
+END; //
+DELIMITER ;
+

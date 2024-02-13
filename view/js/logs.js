@@ -9,7 +9,6 @@ $.ajax({
             tr.innerHTML = `
                 <td>${item.alterTable}</td>
                 <td>${item.alterColumn}</td>
-                <td>${item.oldValue}</td>
                 <td>${item.newValue}</td>
                 <td>${item.dateTime}</td>
             `;
