@@ -10,6 +10,7 @@ $.ajax({
                 <td>${item.alterTable}</td>
                 <td>${item.alterColumn}</td>
                 <td>${item.newValue}</td>
+                <td>${item.alterType}</td>
                 <td>${item.dateTime}</td>
             `;
             tabela.appendChild(tr);

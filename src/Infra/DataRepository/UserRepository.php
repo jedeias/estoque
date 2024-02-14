@@ -62,7 +62,7 @@ class UserRepository implements IUserRepository{
     function getAll() : array{
         try{
 
-            $stmt = $this->sql->getConnect()->prepare("SELECT * FROM user");
+            $stmt = $this->sql->getConnect()->prepare("SELECT pkUser, name, email, type FROM user");
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

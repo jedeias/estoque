@@ -52,7 +52,8 @@ $user = unserialize($serializedUser);
          <tr>
             <th>Alteration</th>
             <th>Camp</th>
-            <th>New Value</th>
+            <th>New value</th>
+            <th>Alter type</th>
             <th>Date</th>
          </tr>
 

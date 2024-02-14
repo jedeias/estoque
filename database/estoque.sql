@@ -45,10 +45,8 @@ CREATE TABLE logs (
     alterTable VARCHAR(255) NOT NULL,
     alterColumn VARCHAR(255) NOT NULL,
     newValue VARCHAR(255) NOT NULL,
+    alterType ENUM('INSERT', 'DELETE', 'UPDATE') NOT NULL,
     dateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    -- FOREIGN KEY (fkAlterItem) REFERENCES user(pkUser),
-    -- FOREIGN KEY (fkAlterItem) REFERENCES products(pkProduct),
-    -- FOREIGN KEY (fkAlterItem) REFERENCES location(pkLocation)
 ) CHARACTER SET utf8;
 
 DELIMITER $$
@@ -101,7 +99,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-CALL updateUser(1, 'jorgeNew', "jorge@mail.com", "password", "Administrator");
+
 
 DELIMITER $$
 
@@ -215,7 +213,7 @@ BEGIN
 END $$
 DELIMITER ;
 
-call getUserByEmail('jorge@mail.com');
+-- call getUserByEmail('jorge@mail.com');
 
 -- INSERT INTO logs (alterTable, fkAlterItem, alterColumn, oldValue, newValue)
 -- VALUES ('users', 1, 'name', 'John', 'Jonathan');
@@ -276,8 +274,8 @@ CREATE TRIGGER user_after_insert
 AFTER INSERT
 ON user FOR EACH ROW
 BEGIN
-    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
-    VALUES ('user', 'name', NEW.name, NOW());
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('user', 'name', NEW.name, 'INSERT', NOW());
 END; //
 DELIMITER ;
 
@@ -287,8 +285,8 @@ AFTER UPDATE
 ON user FOR EACH ROW
 BEGIN
     IF NEW.name <> OLD.name THEN
-        INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
-        VALUES ('user', 'name', NEW.name, NOW());
+        INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+        VALUES ('user', 'name', NEW.name, 'UPDATE', NOW());
     END IF;
 END; //
 DELIMITER ;
@@ -298,8 +296,8 @@ CREATE TRIGGER user_after_delete
 AFTER DELETE
 ON user FOR EACH ROW
 BEGIN
-    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
-    VALUES ('user', 'name', OLD.name, NOW());
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('user', 'name', OLD.name, 'DELETE', NOW());
 END; //
 DELIMITER ;
 
@@ -309,8 +307,8 @@ CREATE TRIGGER stock_after_insert
 AFTER INSERT
 ON location FOR EACH ROW
 BEGIN
-    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
-    VALUES ('location', 'local', NEW.local, NOW());
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('location', 'local', 'INSERT', NEW.local, NOW());
 END; //
 DELIMITER ;
 
@@ -320,8 +318,8 @@ AFTER UPDATE
 ON location FOR EACH ROW
 BEGIN
     IF NEW.local <> OLD.local THEN
-        INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
-        VALUES ('location', 'local', NEW.local, NOW());
+        INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+        VALUES ('location', 'local', 'UPDATE', NEW.local, NOW());
     END IF;
 END; //
 DELIMITER ;
@@ -331,8 +329,74 @@ CREATE TRIGGER stock_after_delete
 AFTER DELETE
 ON location FOR EACH ROW
 BEGIN
-    INSERT INTO logs (alterTable, alterColumn, newValue, dateTime)
-    VALUES ('location', 'local', OLD.local, NOW());
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('location', 'local', OLD.local, 'DELETE', NOW());
 END; //
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER products_after_insert
+AFTER INSERT
+ON products FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('products', 'name', NEW.name, 'INSERT', NOW());
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER products_after_update
+AFTER UPDATE
+ON products FOR EACH ROW
+BEGIN
+    IF NEW.name <> OLD.name THEN
+        INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+        VALUES ('products', 'name', NEW.name, 'UPDATE', NOW());
+    END IF;
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER products_after_delete
+AFTER DELETE
+ON products FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('products', 'name', OLD.name, 'DELETE', NOW());
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER sales_after_insert
+AFTER INSERT
+ON sales FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('sales', 'products', NEW.fkProduct, 'INSERT', NOW());
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER sales_after_update
+AFTER UPDATE
+ON sales FOR EACH ROW
+BEGIN
+    IF NEW.name <> OLD.name THEN
+        INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+        VALUES ('sales', 'products', NEW.fkProduct, 'UPDATE', NOW());
+    END IF;
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER sales_after_delete
+AFTER DELETE
+ON sales FOR EACH ROW
+BEGIN
+    INSERT INTO logs (alterTable, alterColumn, newValue, alterType, dateTime)
+    VALUES ('sales', 'products', NEW.fkProduct, 'DELETE', NOW());
+END; //
+DELIMITER ;
+
+
+CALL updateUser(1, 'jorgeNew', "jorge@mail.com", "password", "Administrator");
