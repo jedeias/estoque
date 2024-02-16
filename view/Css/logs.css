@@ -51,7 +51,7 @@ header > .navbar > ul > li > a:hover{
     position: fixed;
     top: 0.5%;
     right: 0.1%;
-    color: #000000;
+    color: #000;
     cursor: pointer;
     font-size: 1.7rem;
     padding: 0.5rem 0.5rem;
@@ -89,6 +89,47 @@ td {
     border: 1px solid #333;
     padding: 1rem;
     text-align: center;
+}
+  
+.perfil {
+    width: 100px;
+    height: 100px;
+    background:#333;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    right: -50px; 
+    bottom: 8rem;
+    z-index: 1;
+}
+  
+.foto-perfil {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+  
+.informacoes {
+    display: none;
+    width: 200px;
+    padding: 20px;
+    background-color: #181818;
+    border-radius: 10px 50px 50px 10px;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 0.5rem;
+    color: #fff;
+}
+
+.informacoes::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #333333; 
+    border-radius: 50%;
+    right: -50px; 
+    top: 0;
 }
   
  
@@ -155,7 +196,7 @@ td {
  @media(max-width:746px){
 
     header{
-        width: 100%;
+        width: 80%;
     }
 
     .navbar{

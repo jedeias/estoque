@@ -85,8 +85,7 @@ header > .navbar > ul > li > a:hover{
 .container  .card{
     position: relative;
     cursor: pointer;
-    padding-left: 19px;
-    
+    padding-left: 6px;
 }
 
 .container  .card .face{

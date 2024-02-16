@@ -34,6 +34,7 @@ $user = unserialize($serializedUser);
                 <li><a href='exit.php'>Exit</a></li>
                 <li><a href="./php/logs.php">Logs</a></li>
                 <li><a href="./php/matriz.php">Matriz</a></li>
+                <li><a href="./php/products.php">Products</a></li>
                 <li><a href="./php/sales.php">Sales</a></li>
                 <li><a href="./php/user.php">User</a></li>
             </ul>
@@ -54,7 +55,7 @@ $user = unserialize($serializedUser);
             <div class="face face2">
                 <div class="content">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis iure doloremque, molestias dolorem eveniet provident optio magni possimus? Illo minima labore quae mollitia fuga neque voluptates velit quo pariatur sit.</p>
-                    <a href="./html/logs.html">Read More</a>
+                    <a href="./php/logs.php">Read More</a>
                 </div>
             </div>
         </div>
@@ -70,7 +71,23 @@ $user = unserialize($serializedUser);
             <div class="face face2">
                 <div class="content">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis iure doloremque, molestias dolorem eveniet provident optio magni possimus? Illo minima labore quae mollitia fuga neque voluptates velit quo pariatur sit.</p>
-                    <a href="./html/matriz.html">Read More</a>
+                    <a href="./php/matriz.php">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="face facel">
+                <div class="content">
+                    <img src="image/gojo_um.jpg" alt="">
+                    <h3>Products</h3>
+                </div>
+            </div>
+
+            <div class="face face2">
+                <div class="content">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis iure doloremque, molestias dolorem eveniet provident optio magni possimus? Illo minima labore quae mollitia fuga neque voluptates velit quo pariatur sit.</p>
+                    <a href="./php/products.php">Read More</a>
                 </div>
             </div>
         </div>
@@ -86,7 +103,7 @@ $user = unserialize($serializedUser);
             <div class="face face2">
                 <div class="content">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis iure doloremque, molestias dolorem eveniet provident optio magni possimus? Illo minima labore quae mollitia fuga neque voluptates velit quo pariatur sit.</p>
-                    <a href="./html/sales.html">Read More</a>
+                    <a href="./php/sales.php">Read More</a>
                 </div>
             </div>
         </div>
@@ -102,7 +119,7 @@ $user = unserialize($serializedUser);
             <div class="face face2">
                 <div class="content">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis iure doloremque, molestias dolorem eveniet provident optio magni possimus? Illo minima labore quae mollitia fuga neque voluptates velit quo pariatur sit.</p>
-                    <a href="./html/user.html">Read More</a>
+                    <a href="./php/user.php">Read More</a>
                 </div>
             </div>
         </div>

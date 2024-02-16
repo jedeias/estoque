@@ -14,3 +14,4 @@ Interface Iuser{
     function getPrimaryKey();
     function setPrimaryKey($primaryKey);
 }
+

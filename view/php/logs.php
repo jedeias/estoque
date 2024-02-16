@@ -22,8 +22,7 @@ $user = unserialize($serializedUser);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/logs.css">
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-   <script src="../js/logs.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Logs</title>
  </head>
  <body>
@@ -33,11 +32,11 @@ $user = unserialize($serializedUser);
       <h1>Logs!</h1>
     
          <nav class="navbar">
-             <ul>
-                 <li><a href='exit.php'>Exit</a></li>
-                 <li><a href="./matriz.html">Matriz</a></li>
-                 <li><a href="./sales.html">Sales</a></li>
-                 <li><a href="./user.html">User</a></li>
+            <ul><li><a href='./exit.php'>Exit</a></li>
+                <li><a href="./logs.php">Logs</a></li>
+                <li><a href="./matriz.php">Matriz</a></li>
+                <li><a href="./sales.php">Sales</a></li>
+                <li><a href="./user.php">User</a></li>
              </ul>
          </nav>
  
@@ -63,9 +62,21 @@ $user = unserialize($serializedUser);
 
    </section>
 
+   <div id="perfil" class="perfil" onclick="mostrarInformacoes()">
+   
+   </div>
+  
+   <div id="informacoes" class="informacoes">
+      <h2>Informações do Perfil</h2>
+      <p>Nome: <?php echo $user->getName();?></p>
+      <p>Email: <?php echo $user->getEmail();?></p>
+   </div>
+
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-   <script src="/view/js/home.js"></script>
+   <script src="../js/logs.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   
  </body>
  </html>
 
