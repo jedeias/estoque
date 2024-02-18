@@ -26,10 +26,11 @@ $user = unserialize($serializedUser);
     <title>Home</title>
 </head>
 <body>
-
+    
     <header>
     
         <nav class="navbar">
+            <h1 class="title">Bem-Vindo à área de redirecionamento <?php echo $user->getName();?>!</h1>
             <ul>
                 <li><a href='exit.php'>Exit</a></li>
                 <li><a href="./php/logs.php">Logs</a></li>
@@ -43,6 +44,7 @@ $user = unserialize($serializedUser);
 
     <div id="menu" class="fas fa-bars"></div>
 
+    
     <div class="container">
         <div class="card">
             <div class="face facel">
