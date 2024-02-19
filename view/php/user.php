@@ -32,6 +32,7 @@ $user = unserialize($serializedUser);
       <header>
         
          <nav class="navbar">
+            <h1 class="title">Bem-Vindo à área de Usuário <?php echo $user->getName();?>!</h1>
                <ul>
                   <li><a href='exit.php'>Exit</a></li>
                   <li><a href="./logs.php">Logs</a></li>

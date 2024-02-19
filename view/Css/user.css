@@ -58,6 +58,12 @@ header > .navbar > ul > li > a:hover{
     box-shadow: 0.2rem 0.2rem 0.2rem  #000000;
 }
 
+.title{
+    color: #fff;
+    font-size: 28px;
+    border-bottom: 1px solid #fff;
+}
+
 
 #menu{
     position: fixed;
@@ -208,7 +214,7 @@ td {
     bottom: 1.5rem;
     right: 0;
     color: #fff;
-    
+    box-shadow: 0 0 50px #000;
 }
 
 .informacoes > p{
