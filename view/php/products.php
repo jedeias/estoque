@@ -24,7 +24,7 @@ $user = unserialize($serializedUser);
     <link rel="stylesheet" href="../css/user.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../js/user.js"></script>
+    <script src="../js/products.js"></script>
     <title>User</title>
 </head>
 <body>
@@ -51,16 +51,16 @@ $user = unserialize($serializedUser);
             <h1>Register products</h1>
 
             <label for="name"></label>
-            <input type="text" name="name" id="name" placeholder="Nome">
+            <input type="text" name="name" id="name" placeholder="Name">
             
             <label for="price"></label>
-            <input type="text" name="price" id="price" placeholder="E-mail">
+            <input type="text" name="price" id="price" placeholder="Price">
             
             <label for="marck"></label>
-            <input type="text" name="marck" id="marck" placeholder="Password">
+            <input type="text" name="mark" id="mark" placeholder="Mark">
             
             <label for="validate"></label>
-            <input type="date" name="validate" id="validate" placeholder="Password">
+            <input type="date" name="validate" id="validate">
             
             
             <button type="submit" form="POST">Send</button>
@@ -72,8 +72,9 @@ $user = unserialize($serializedUser);
             <thead>
                <tr>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>Type</th>
+                  <th>Price</th>
+                  <th>Mark</th>
+                  <th>Validate</th>
                </tr>
             </thead>
 <!-- 
