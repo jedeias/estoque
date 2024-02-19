@@ -130,6 +130,18 @@ td {
     box-shadow: 0 0 50px #000;
 }
 
+
+#infomacoes {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+  }
+
 .informacoes::before {
     content: '';
     position: absolute;

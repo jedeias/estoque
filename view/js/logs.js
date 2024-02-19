@@ -50,13 +50,15 @@ $(document).ready(function(){
 
 });
 
-function mostrarInformacoes() {
-    var informacoesDiv = document.getElementById("informacoes");
-    
-    if (informacoesDiv.style.display === "none") {
-      informacoesDiv.style.display = "block";
-    } else {
-      informacoesDiv.style.display = "none";
-    }
-  }
-  
+
+var perfil = document.getElementById('perfil');
+var info = document.getElementById('informacoes');
+
+perfil.addEventListener('mouseover', function() {
+    info.style.display = 'block';
+  });
+
+
+perfil.addEventListener('mouseout', function() {
+    info.style.display = 'none';
+  });
