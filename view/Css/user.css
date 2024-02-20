@@ -149,6 +149,8 @@ button:hover {
     background: #fff;
     border-radius: 7px;
     box-shadow: 0.5rem 0.5rem 0.5rem rgb(182, 170, 170);
+    overflow: auto  ;
+    
 }
 
 table {

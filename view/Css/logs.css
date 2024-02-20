@@ -83,6 +83,7 @@ header h1 {
 table {
     width: 100%;
     border-collapse: collapse;
+    overflow: hidden;
 }
   
 
