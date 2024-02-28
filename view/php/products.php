@@ -74,6 +74,7 @@ $user = unserialize($serializedUser);
                   <th>Price</th>
                   <th>Mark</th>
                   <th>Validate</th>
+                  <th>Edit</th>
                </tr>
             </thead>
 <!-- 
@@ -97,6 +98,8 @@ $user = unserialize($serializedUser);
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../js/products.js"></script>
+    <script src="../js/userInf.js"></script>
+    <script src="../js/home.js"></script>
 
 </body>
 </html>
