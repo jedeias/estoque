@@ -24,7 +24,6 @@ $user = unserialize($serializedUser);
    <link rel="stylesheet" href="../css/user.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-   <script src="../js/user.js"></script>
    <title>User</title>
 </head>
 <body>
@@ -74,6 +73,7 @@ $user = unserialize($serializedUser);
                   <th>Name</th>
                   <th>Email</th>
                   <th>Type</th>
+                  <th>Edit</th>
                </tr>
             </thead>
 
@@ -90,5 +90,11 @@ $user = unserialize($serializedUser);
       <p>Nome: <?php echo $user->getName();?></p>
       <p>Email: <?php echo $user->getEmail();?></p>
    </div>
+
+   <script src="../js/user.js"></script>
+   <script src="../js/home.js"></script>
+   <script src="../js/userInf.js"></script>
+
 </body>
 </html>
+

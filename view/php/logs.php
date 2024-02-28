@@ -76,6 +76,8 @@ $user = unserialize($serializedUser);
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    <script src="../js/logs.js"></script>
+   <script src="../js/home.js"></script>
+   <script src="../js/userInf.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    
  </body>

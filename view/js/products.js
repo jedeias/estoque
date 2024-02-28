@@ -49,6 +49,11 @@ function requestProducts() {
             
             let existingNames = {};
             
+            let img = document.createElement('img');
+            img.src = "../image/edit.svg";
+
+
+
             resultado.forEach(item => {
                 if (!existingNames[item.name]) {
                     let tr = $('<tr></tr>');
@@ -56,7 +61,10 @@ function requestProducts() {
                     tr.append(`<td>${item.price}</td>`);
                     tr.append(`<td>${item.mark}</td>`);
                     tr.append(`<td>${item.validate}</td>`);
+                    tr.append(`<td class='img' onclick="editTrigger(${item.pkProduct})"></td>`);
+                    
                     tabela.append(tr);
+                    
                     existingNames[item.name] = true; 
                 }
             });
@@ -69,45 +77,46 @@ function requestProducts() {
 
 requestProducts();
 
+function editTrigger(item){
 
-$(document).ready(function(){
+    let update = document.getElementById('update');
 
-    $('#menu').click(function(){
-        $(this).toggleClass('fa-times');
-        $('header').toggleClass('toggle');
+    if (update){
+        document.body.removeChild(update);
+    }
+
+    let editForm = document.createElement('form');
+    editForm.method = 'POST';
+    editForm.id = 'update';
+    editForm.class = 'update';
+
+    let inputs = ['name', 'price', 'mark', 'date'];
+
+    inputs.forEach(function (element) {
+        
+        let newInput = document.createElement('input');
+        let label = document.createElement('label');
+
+        label.innerHTML = element;
+
+        newInput.name = element;
+        newInput.id = element;
+
+        if (newInput == 'date') {
+            newInput.type = 'date';
+            
+        }   
+
+        editForm.append(label);
+        editForm.append(newInput);
+
     });
 
-    $(window).on('scroll load', function(){
-        $('#menu').removeClass('fa-times');
-        $('header').removeClass('toggle');
-    });
+    let button = document.createElement('button');
+    button.type = 'submit';
 
-    $('a[href*="#"]').on('click',function(e){
+    editForm.appendChild(button);
 
-        e.preventDefault();
+    document.body.appendChild(editForm);
+}
 
-        $('html,body').animate({
-
-            scrollTop : $($(this).attr('href')).offset().top,
-
-        },
-            500,
-            'linear'
-        );
-
-    });
-
-});
-
-
-var perfil = document.getElementById('perfil');
-var info = document.getElementById('informacoes');
-
-perfil.addEventListener('mouseover', function() {
-    info.style.display = 'block';
-});
-
-
-perfil.addEventListener('mouseout', function() {
-    info.style.display = 'none';
-});

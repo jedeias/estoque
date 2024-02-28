@@ -50,6 +50,7 @@ function requestTable() {
                     <td>${element.name}</td>
                     <td>${element.price}</td>
                     <td>${element.amount}</td>
+                    tr.append(<td onclick="editTrigger(${element.pklocation})"> ${element.pklocation} </td>);
                 `);
                 tabela.append(tr);
                 existingElements[element.pkProduct + element.name] = true;
@@ -92,43 +93,45 @@ function requestProducts() {
 
 requestProducts();
 
+function editTrigger(item){
 
-$(document).ready(function(){
+    let update = document.getElementById('update');
 
-    $('#menu').click(function(){
-        $(this).toggleClass('fa-times');
-        $('header').toggleClass('toggle');
-    });
-
-    $(window).on('scroll load', function(){
-        $('#menu').removeClass('fa-times');
-        $('header').removeClass('toggle');
-    });
-
-    $('a[href*="#"]').on('click',function(e){
-
-        e.preventDefault();
-
-        $('html,body').animate({
-
-            scrollTop : $($(this).attr('href')).offset().top,
-
-        },
-            500,
-            'linear'
-        );
-
-    });
-
-});
-
-function mostrarInformacoes() {
-    var informacoesDiv = document.getElementById("informacoes");
-  
-    if (informacoesDiv.style.display === "none") {
-      informacoesDiv.style.display = "block";
-    } else {
-      informacoesDiv.style.display = "none";
+    if (update){
+        document.body.removeChild(update);
     }
-  }
-  
+
+    let editForm = document.createElement('form');
+    editForm.method = 'POST';
+    editForm.id = 'update';
+    editForm.class = 'update';
+
+    let inputs = ['local', 'price', 'amonunt'];
+
+    inputs.forEach(function (element) {
+        
+        let newInput = document.createElement('input');
+        let label = document.createElement('label');
+
+        label.innerHTML = element;
+
+        newInput.name = element;
+        newInput.id = element;
+
+        if (newInput == 'date') {
+            newInput.type = 'date';
+            
+        }   
+
+        editForm.append(label);
+        editForm.append(newInput);
+
+    });
+
+    let button = document.createElement('button');
+    button.type = 'submit';
+
+    editForm.appendChild(button);
+
+    document.body.appendChild(editForm);
+}
