@@ -10,13 +10,14 @@ $(document).ready(function() {
         var type = $('#type').val();
 
         $.ajax({
-            url: '/estoque/src/Controller/User/UserRegister.php',
+            url: '/estoque/src/Controller/User/UserController.php',
             method: 'POST',
             data: {
-                name: name,
-                email: email,
-                password: password,
-                type: type
+                'name': name,
+                'email': email,
+                'password': password,
+                'type': type,
+                'method': "userRegister"
             },
             dataType: 'json',
             success:function(){
@@ -33,7 +34,11 @@ $(document).ready(function() {
 
 function request() {
     $.ajax({
-        url: '/estoque/src/Controller/User/UserRequest.php',
+        url: '/estoque/src/Controller/User/UserController.php',
+        method: 'POST',
+        data:{
+            'method': "userRequest"
+        },
         success: function(request) {
             let tabela = $('.elements');
             tabela.empty();

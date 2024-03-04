@@ -45,7 +45,7 @@ CREATE TABLE logs (
     alterTable VARCHAR(255) NOT NULL,
     alterColumn VARCHAR(255) NOT NULL,
     newValue VARCHAR(255) NOT NULL,
-    alterType ENUM('INSERT', 'DELETE', 'UPDATE') NOT NULL,
+    alterType TEXT NOT NULL,
     dateTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) CHARACTER SET utf8;
 

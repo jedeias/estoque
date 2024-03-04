@@ -14,9 +14,10 @@ $(document).ready(function() {
             data: {
                 "local": local,
                 "product": product,
-                "amount": amount
+                "amount": amount,
+                "method": 'localRegister'
             },
-            dataType: 'json',
+            // dataType: 'json',
             success:function(){
                 requestTable();
                 requestProducts();
@@ -33,7 +34,11 @@ $(document).ready(function() {
 
 function requestTable() {
     $.ajax({
-        url: '/estoque/src/Controller/Local/LocalRequest.php',
+        url: '/estoque/src/Controller/Local/LocalController.php',
+        method: 'POST',
+        data:{
+            'method': 'localRequest'
+        },
         success: function(request) {
             let tabela = $('.elements');
             tabela.empty();
@@ -68,7 +73,11 @@ requestTable();
 
 function requestProducts() {
     $.ajax({
-        url: '/estoque/src/Controller/Product/ProductRequest.php',
+        url: '/estoque/src/Controller/Product/ProductController.php',
+        method: 'POST',
+        data:{
+            'method': "productRequest",
+        },
         success: function(request) {
             let product = $('.products');
             product.empty();
