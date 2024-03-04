@@ -12,13 +12,14 @@ $(document).ready(function() {
         console.log(nameProduct, price, mark, validate);
 
         $.ajax({
-            url: "/estoque/src/Controller/Product/ProductRegister.php",
+            url: "/estoque/src/Controller/Product/ProductController.php",
             method: 'POST',
             data:{
                 'name': nameProduct,
                 'price': price,
                 'mark': mark,
-                'validate': validate
+                'validate': validate,
+                'method': "productRegister"
             },
             success: function() {
 
@@ -40,7 +41,11 @@ $(document).ready(function() {
 
 function requestProducts() {
     $.ajax({
-        url: "/estoque/src/Controller/Product/ProductRequest.php",
+        url: "/estoque/src/Controller/Product/ProductController.php",
+        method: 'POST',
+        data:{
+            'method': 'productRequest'
+        },
         success: function(resultado) {
             console.log(resultado);
             let tabela = $('.elements');

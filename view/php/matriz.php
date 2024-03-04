@@ -34,7 +34,7 @@ $user = unserialize($serializedUser);
             <nav class="navbar">
             <h1 class="title">Bem-Vindo à área de Matrix <?php echo $user->getName();?>!</h1>
                 <ul>
-                    <li><a href='exit.php'>Exit</a></li>
+                    <li><a href='../exit.php'>Exit</a></li>
                     <li><a href="./logs.php">Logs</a></li>
                     <li><a href="./matriz.php">Matriz</a></li>
                     <li><a href="./products.php">Products</a></li>

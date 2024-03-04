@@ -14,8 +14,6 @@ $data = json_decode(file_get_contents("php://input"));
 $email = $data->email;
 $password = $data->password;
 
-//var_dump($data);
-
 if (empty($email) || empty($password)) {
     echo json_encode("Send values not found");
     exit;
