@@ -70,7 +70,7 @@ request();
 function editTrigger(item){
 
     let update = document.getElementById('update');
-
+    
     if (update){
         document.body.removeChild(update);
     }
@@ -79,6 +79,8 @@ function editTrigger(item){
     editForm.method = 'POST';
     editForm.id = 'update';
     editForm.class = 'update';
+    editForm.innerHTML = '<h1>Edit</h1>'
+    
 
     let inputs = ['name', 'email', 'password', 'type'];
 
@@ -104,6 +106,7 @@ function editTrigger(item){
 
     let button = document.createElement('button');
     button.type = 'submit';
+    button.innerHTML = 'Enviar'
 
     editForm.appendChild(button);
 

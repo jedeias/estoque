@@ -1,4 +1,4 @@
-var perfil = document.getElementById('perfil');
+var perfil = document.getElementById('perfil');   // pega o perfil
 var info = document.getElementById('informacoes');
 
 perfil.addEventListener('mouseover', function() {
