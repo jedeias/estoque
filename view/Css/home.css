@@ -10,28 +10,30 @@ body{
     padding: 0;
     min-height: 100vh;
     background:var(--bg-grey-light);
-    color: var(--text-white);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: consolas;
 
-    --text-white:#ffffff;
-    --text-dark:#142136;
+     /* cores de texto */
+  --text-white: #ffffff;
+  --text-dark: #142136;
 
-    --bg-gray_light:#bcb1b1;
-    --bg-white:#ffffff;
-    --bg-blue-dark:#142136;
-    --bg-indigo:#6366f1;
+  /* cores de fundo */
+  --bg-grey-light: #9e9595;
+  --bg-white: #ffffff;
+  --bg-blue-dark: #142136;
+  --bg-indigo: #6366f1;
+
 }
 
-.dark{
-    --text-white:#e6e6e6;
-    --text-dark:#ffffff;
-    --bg-grey-light:#282828;
-    --bg-white:#22395d;
-    --bg-blue-dark:#142136;
-    --bg-indigo:#7577e1;
+.dark {
+  --text-white: #e6e6e6;
+  --text-dark: #ffffff;
+  --bg-grey-light: #282828;
+  --bg-white: #22395d;
+  --bg-blue-dark: #282828;
+  --bg-indigo: #7577e1;
 }
 
 .title{
@@ -47,7 +49,7 @@ header{
     z-index: 1000;
     height: 100%;
     width: 30rem;
-    background: #282828;
+    background: var(--bg-grey-light);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,11 +75,11 @@ header > .navbar > ul > li > a{
     display: block;
     padding: 0.5rem;
     margin: 1.5rem 0;
-    background: #333;
+    background: var(--bg-blue-dark);
     color: #fff;
     font-size: 2rem;
     border-radius: 5rem;
-    box-shadow: 0.2rem 0.2rem 0.2rem #fff;
+    box-shadow: 0.2rem 0.2rem 0.2rem #000000;
 }
 
 header > .navbar > ul > li > a:hover{
@@ -119,7 +121,7 @@ header > .navbar > ul > li > a:hover{
 
 .container  .card  .face.facel{
     position: relative;
-    background: #575555;
+    background: var(--bg-blue-dark);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,9 +190,9 @@ header > .navbar > ul > li > a:hover{
     display: inline-block;
     text-decoration: none;
     font-weight: 900;
-    color: #333;
+    color: #fff;
     padding: 5px;
-    background: #000;
+    background: var(--bg-blue-dark);
     border-radius: 7px;
     box-shadow: 15px 40px 50px rgba(0,0,0,0.8);
 }
@@ -198,6 +200,28 @@ header > .navbar > ul > li > a:hover{
 .container .card .face.face2 .content a:hover{
     background: #333;
     color: #fff;
+}
+
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.button {
+    width: 200px;
+    padding: 5px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    cursor: pointer;
+    background-color: var(--bg-indigo);
+    color: var(--text-white);
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
 }
 
 

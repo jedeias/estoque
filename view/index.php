@@ -41,10 +41,12 @@ $user = unserialize($serializedUser);
             </ul>
 
             <div class="buttons">
-                <button id="toggle" class="button">Toggle</button>
-
+        
+                <button id="toggle" class="button">toggle</button>
+                
                 <button id="refresh" class="button">refresh</button>
             </div>
+
         </nav>
     </header>
 
