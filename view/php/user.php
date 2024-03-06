@@ -46,7 +46,7 @@ $user = unserialize($serializedUser);
       <div id="menu" class="fas fa-bars"></div>      
    
    <div class="container">
-      <form id="POST" action="pagina_temporaria.php" method="post">
+      <form id="POST" action="pagina_temporaria.php" method="post" class="form">
          <h1>Cadastro de Usúario</h1>
 
          <label for="name"></label>

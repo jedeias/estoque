@@ -9,11 +9,29 @@ body{
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background:#333;
+    background:var(--bg-grey-light);
+    color: var(--text-white);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: consolas;
+
+    --text-white:#ffffff;
+    --text-dark:#142136;
+
+    --bg-gray_light:#bcb1b1;
+    --bg-white:#ffffff;
+    --bg-blue-dark:#142136;
+    --bg-indigo:#6366f1;
+}
+
+.dark{
+    --text-white:#e6e6e6;
+    --text-dark:#ffffff;
+    --bg-grey-light:#282828;
+    --bg-white:#22395d;
+    --bg-blue-dark:#142136;
+    --bg-indigo:#7577e1;
 }
 
 .title{

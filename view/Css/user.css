@@ -240,7 +240,36 @@ td {
     bottom: 4.5rem;
 }
   
-  
+#update{
+    position: absolute;
+    top: 66%;
+    left: 82%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+#update > h1{
+    border-bottom: 1px solid #000;
+}
+
+
+
+#update > input{
+    width: 100%;
+    border: 1px solid #000;
+    padding: 7px;
+    border-radius: 10px;
+    outline: none;;
+}
+
+#update > button{
+    box-shadow: none;
+
+}
+
+#update > button:hover{
+    box-shadow: 0 0 50px #000;
+}
 
 
 @media (max-width:1200px) {
