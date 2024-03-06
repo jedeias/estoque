@@ -3,6 +3,7 @@
 namespace Estoque\Controller\User;
 
 use Estoque\Infra\DataRepository\UserRepository;
+use Estoque\Core\UseCases\Session\Session;
 use Estoque\Core\Entities\User\User;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
@@ -39,6 +40,33 @@ class UserController{
 
     }
 
+    function userUpdate() {
+        try{
+            
+            $session = new Session();
+
+            $serializedUser = $session->get("serializeUser");
+            $user = unserialize($serializedUser);
+
+            $repository = new UserRepository();
+            
+            $user->setName($_POST['name']);
+            $user->setPassword($_POST['password']);
+            $user->setEmail($_POST['email']);
+            
+            $serialize = serialize($user);
+
+            $session->set("serializeUser", $serialize);
+
+            $status = $repository->upload($user);
+
+            echo json_encode(print_r($status));
+            
+        }catch(Exception $e){
+            echo json_encode("has a error: " . $e->getMessage());
+        }
+    }
+
     function userRequest(){
         try{
 
@@ -59,11 +87,11 @@ class UserController{
 
 if (isset($_POST["method"])){
     $methodName = $_POST["method"];
+    
+    $userController = new UserController();
+
+    $userController->$methodName();
+
 }else{
     echo die(json_encode("Method not found"));
 }
-
-
-$userController = new UserController();
-
-$userController->$methodName();

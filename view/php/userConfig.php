@@ -26,29 +26,27 @@ $user = unserialize($serializedUser);
 </head>
 <body>
 
-    <section class="container">
-
-        <form id="UPDATE" method="POST" class="form">
-            <h1>Alter</h1>
-            
-            <label for="name">Name</label>
-            <input type="text" name="name" id="id" value="<?php echo $user->getName(); ?>">
-            <br>
-            <label for="email">E-mail</label>
-            <input type="text" name="email" id="id" value="<?php echo $user->getEmail(); ?>">
-            
-            <label for="passoword">PassWord</label>
-            <input type="text" name="password" id="id" value="<?php echo $user->getPassword(); ?>">
-            
-            <button type="submit">chang</button>
-
-        </form>
-    </section>
-
-
+  <section class="container">
+    <form id="UPDATE" method="POST">
+      <h1>Alter</h1>
+      
+    <label for="name">Name</label>    
+    <input type="text" name="name" id="name" value="<?php echo $user->getName(); ?>">
+    <br>
+    <label for="email">E-mail</label>
+    <input type="text" name="email" id="email" value="<?php echo $user->getEmail(); ?>">
     
-    <script src="../js/home.js"></script>
-    <script src="../js/userInf.js"></script>
+    <label for="passoword">PassWord</label>  
+    <input type="text" name="password" id="password" value="<?php echo $user->getPassword(); ?>">
+    
+    <button type="submit">chang</button>
+
+    </form>
+   </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
     <script src="../js/userConfig.js"></script>
 
 </body>

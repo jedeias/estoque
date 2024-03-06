@@ -110,15 +110,15 @@ class UserRepository implements IUserRepository{
             $stmt->bindValue(':email', $user->getEmail());
             $stmt->bindValue(':password', $user->getPassword());
             $stmt->bindValue(':type', $user->getType());
-            $success = $stmt->execute();
-            if (!$success) {
-                return ['error' => 'execute failed'];
-            }
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            if (!$result) {
-                return ['error' => 'no result'];
-            }
-            return $result[0];
+            $stmt->execute();
+            // if (!$success) {
+            //     return ['error' => 'execute failed'];
+            // }
+            // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // if (!$result) {
+            //     return ['error' => 'no result'];
+            // }
+            // return $result[0];
         } catch(\PDOException $e) {
             return ['error' => $e->getMessage()];
         }
