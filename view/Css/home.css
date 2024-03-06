@@ -79,11 +79,12 @@ header > .navbar > ul > li > a{
     color: #fff;
     font-size: 2rem;
     border-radius: 5rem;
-    box-shadow: 0.2rem 0.2rem 0.2rem #000000;
+    border: 1px solid #000;
 }
 
 header > .navbar > ul > li > a:hover{
     background-color: #fff;
+    border: none;
     color: #000;
     box-shadow: 0 0 50px #f4f4f4;
 }
@@ -127,7 +128,7 @@ header > .navbar > ul > li > a:hover{
     align-items: center;
     z-index: 1;
     transform: translateY(100px);
-
+    border: 2px solid #000;
 }
 
 .container .card:hover .face.facel{
@@ -166,8 +167,12 @@ header > .navbar > ul > li > a:hover{
     align-items: center;
     padding-left: 10px;
     box-sizing: border-box;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     transform: translateY(-100.1px);
+    
+}
+
+.container .card .face:hover{
+    box-shadow: 0 0 50px #000;
 }
 
 .container .card:hover .face.face2{
@@ -194,7 +199,7 @@ header > .navbar > ul > li > a:hover{
     padding: 5px;
     background: var(--bg-blue-dark);
     border-radius: 7px;
-    box-shadow: 15px 40px 50px rgba(0,0,0,0.8);
+    
 }
 
 .container .card .face.face2 .content a:hover{
@@ -206,7 +211,7 @@ header > .navbar > ul > li > a:hover{
 .buttons {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-aroun;
     margin-bottom: 40px;
 }
 .button {
@@ -223,6 +228,8 @@ header > .navbar > ul > li > a:hover{
     font-weight: 400;
     text-transform: capitalize;
 }
+
+
 
 
 @media (max-width:1200px) {
