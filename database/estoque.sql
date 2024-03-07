@@ -127,6 +127,39 @@ call insertProducts("wather", 1, "cristal", "2026-02-02");
 
 SELECT * FROM products;
 
+-- updateProducts
+
+DELIMITER $$
+
+CREATE PROCEDURE updateProduct(
+
+    IN _pk INT,
+    IN _name VARCHAR(255),
+    IN _price FLOAT,
+    IN _mark VARCHAR(255),
+    IN _validate DATE
+
+)
+
+BEGIN
+    START TRANSACTION;
+
+    UPDATE products SET name = _name,
+                        price = _price,
+                        mark = _mark,
+                        validate = _validate
+                        WHERE pkProduct = _pk;
+
+    COMMIT;
+        ROLLBACK;
+END $$
+DELIMITER ;
+
+call updateProduct(10, "Fone Wireless", "35", "JBL", "2030-03-04");
+
+-- insertLocation
+
+
 DELIMITER $$
 
 CREATE PROCEDURE insertLocation(

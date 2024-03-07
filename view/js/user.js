@@ -42,7 +42,6 @@ function request() {
         },
         success: function(response) {
             requestData = response; // Armazenar a resposta do AJAX na variável global
-            // console.log("requestData:", requestData);
             let tabela = $('.elements');
             tabela.empty();
 
@@ -71,30 +70,25 @@ function request() {
 
 request();
 
-
 function editTrigger(pkUser){
     let update = document.getElementById('update');
 
     if (update){
-
-function editTrigger(item) {
-    let update = document.getElementById('update');
-    
-    if (update) {
         document.body.removeChild(update);
     }
 
     let editForm = document.createElement('form');
     editForm.method = 'POST';
     editForm.id = 'update';
-
     editForm.className = 'update';
-    editForm.innerHTML = '<h1>Edit</h1>';
-    
+
     let inputs = ['name', 'email', 'password', 'type'];
 
     pkUser = pkUser - 1;
+
     let userData = requestData[pkUser];
+
+    console.log("pk user", pkUser);
 
     console.log('userData:', userData); // Adicionando um log para verificar os dados do usuário
 
@@ -107,12 +101,13 @@ function editTrigger(item) {
         newInput.name = element;
         newInput.id = `${element}Update`;
         newInput.value
+        // newInput.value = userData[element] || ''; // Preenchendo os valores dos campos do formulário com os dados do usuário
 
         newInput.setAttribute('value', userData[element] || '');
 
         if (element == 'type') {
             newInput = document.createElement('select');
-            newInput.name = `type`;
+            newInput.name = 'type';
             newInput.id = `typeUpdate`;
 
             let types =  ["Administrator", "Assistant"];
@@ -127,36 +122,28 @@ function editTrigger(item) {
 
         editForm.appendChild(label);
         editForm.appendChild(newInput);
-
-        if (element == 'date') { // Corrigido de newInput == 'date' para element == 'date'
-            newInput.type = 'date';
-        }   
-
-        editForm.append(label);
-        editForm.append(newInput);
-
     });
 
     let button = document.createElement('button');
     button.type = 'submit';
-
     button.setAttribute('form', 'update');
     button.innerHTML = 'Send';
 
-    button.innerHTML = 'Enviar';
+    document.body.appendChild(editForm);
+    editForm.appendChild(button);
 
-    // Criando o botão de fechar com um ícone
-    let closeButton = document.createElement('i');
-    closeButton.className = 'fas fa-times'; // Classe do FontAwesome para um ícone de fechar
-    closeButton.style.fontSize = '34px'
-    closeButton.style.position = 'absolute'
-    closeButton.style.bottom = '85%'
-    closeButton.style.left = '80%'
-    closeButton.addEventListener('click', function() {
-        document.body.removeChild(editForm);
-    });
-
-    // Adicionando o botão de fechar ao formulário
+        // Criando o botão de fechar com um ícone
+        let closeButton = document.createElement('i');
+        closeButton.className = 'fas fa-times'; // Classe do FontAwesome para um ícone de fechar
+        closeButton.style.fontSize = '34px'
+        closeButton.style.position = 'absolute'
+        closeButton.style.bottom = '85%'
+        closeButton.style.left = '80%'
+        closeButton.addEventListener('click', function() {
+            document.body.removeChild(editForm);
+        });
+    
+        // Adicionando o botão de fechar ao formulário
     editForm.appendChild(button);
     editForm.appendChild(closeButton);
 
@@ -164,10 +151,11 @@ function editTrigger(item) {
     editForm.appendChild(button);
 
     upAwait(pkUser);
+
 }
 
 function upAwait(pkUser){
-
+    
     $(document).ready(function() {
         var formulario = $('#update');
         
@@ -180,13 +168,13 @@ function upAwait(pkUser){
             let type = $('#typeUpdate').val();
             
             pkUser = pkUser + 1 // reimplementado o valor decrementado na função editTrigger para proder manipular a array
-
+            
             console.log(pkUser, name, email, password, type);
-
+            
             $.ajax({
-            url: '/estoque/src/Controller/User/UserController.php',
-            method: 'POST',
-            data: {
+                url: '/estoque/src/Controller/User/UserController.php',
+                method: 'POST',
+                data: {
                 'pkUser': pkUser,
                 'name': name,
                 'email': email,
@@ -202,8 +190,9 @@ function upAwait(pkUser){
                 console.log(error);
                 request();
             }
+
         });
+        pkUser = pkUser -1 ;
     });
 });
 }
-

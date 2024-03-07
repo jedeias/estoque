@@ -76,8 +76,29 @@ class ProductsRepository implements IProductsRepository{
         }
     }
 
-    function upload(IProducts $products){
-        
+    function update(IProducts $products){
+        try {
+            $stmt = $this->sql->getConnect()->prepare("call updateProduct(:pk, :name, :price, :mark, :validate)");
+            if (!$stmt) {
+                return ['error' => 'prepare failed'];
+            }
+            $stmt->bindValue(':pk', $products->getPrimaryKey());
+            $stmt->bindValue(':name', $products->getName());
+            $stmt->bindValue(':price', $products->getPrice());
+            $stmt->bindValue(':mark', $products->getMark());
+            $stmt->bindValue(':validate', $products->getValidate());
+            $stmt->execute();
+            // if (!$success) {
+            //     return ['error' => 'execute failed'];
+            // }
+            // $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // if (!$result) {
+            //     return ['error' => 'no result'];
+            // }
+            // return $result[0];
+        } catch(\PDOException $e) {
+            return ['error' => $e->getMessage()];
+        }
     }
 
     public function getProducts(): IProducts

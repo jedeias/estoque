@@ -111,14 +111,6 @@ function requestProducts(callback) {
 let localData;
 let productsData;
 
-productsData = requestProducts(function(productsData) {
-    return productsData;
-});
-
-requestProducts(function(productsData) {
-    console.log('products', productsData);
-});
-
 requestTable();
 requestProducts();
 

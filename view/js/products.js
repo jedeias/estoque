@@ -39,6 +39,8 @@ $(document).ready(function() {
     });
 });
 
+let productData;
+
 function requestProducts() {
     $.ajax({
         url: "/estoque/src/Controller/Product/ProductController.php",
@@ -48,16 +50,14 @@ function requestProducts() {
         },
         success: function(resultado) {
             console.log(resultado);
+
+            productData = resultado; // Variável global para armazenar a resposta do AJAX
+
             let tabela = $('.elements');
             
             tabela.empty();
             
             let existingNames = {};
-            
-            let img = document.createElement('img');
-            img.src = "../image/edit.svg";
-
-
 
             resultado.forEach(item => {
                 if (!existingNames[item.name]) {
@@ -66,7 +66,7 @@ function requestProducts() {
                     tr.append(`<td>${item.price}</td>`);
                     tr.append(`<td>${item.mark}</td>`);
                     tr.append(`<td>${item.validate}</td>`);
-                    tr.append(`<td class='img' onclick="editTrigger(${item.pkProduct})"></td>`);
+                    tr.append(`<td onclick="editTrigger(${item.pkProduct})">${item.pkProduct}</td>`);
                     
                     tabela.append(tr);
                     
@@ -97,6 +97,8 @@ function editTrigger(item){
 
     let inputs = ['name', 'price', 'mark', 'date'];
 
+    data = productData[item - 1]; // decrementando uma unidade para poder manipular a array corretamente
+    
     inputs.forEach(function (element) {
         
         let newInput = document.createElement('input');
@@ -105,9 +107,10 @@ function editTrigger(item){
         label.innerHTML = element;
 
         newInput.name = element;
-        newInput.id = element;
+        newInput.value = data[element];
+        newInput.id = `${element}Update`;
 
-        if (newInput == 'date') {
+        if (element == 'date') {
             newInput.type = 'date';
             
         }   
@@ -117,11 +120,67 @@ function editTrigger(item){
 
     });
 
+
     let button = document.createElement('button');
     button.type = 'submit';
-
-    editForm.appendChild(button);
-
+    button.setAttribute('form', 'update');
+    button.innerHTML = 'Send';
+    
+    // Criando o botão de fechar com um ícone
+    let closeButton = document.createElement('i');
+    closeButton.className = 'fas fa-times'; // Classe do FontAwesome para um ícone de fechar
+    closeButton.style.fontSize = '34px'
+    closeButton.style.position = 'absolute'
+    closeButton.style.bottom = '85%'
+    closeButton.style.left = '80%'
+    closeButton.addEventListener('click', function() {
+        document.body.removeChild(editForm);
+    });
+    
+    editForm.appendChild(button); // Adicionando o botão de fechar ao formulário
+    editForm.appendChild(closeButton);
     document.body.appendChild(editForm);
+
+    updateProduct(item);
+
 }
 
+function updateProduct(productKey) {
+
+    $(document).ready(function() {
+        var formulario = $('#update');
+        
+        formulario.submit(function(event) {
+            event.preventDefault();
+            
+            let name = $('#nameUpdate').val();
+            let price = $('#priceUpdate').val();
+            let mark = $('#markUpdate').val();
+            let data = $('#dateUpdate').val();
+            
+            console.log(productKey, name, price, mark, data);
+            
+            $.ajax({
+                url: '/estoque/src/Controller/Product/ProductController.php',
+                method: 'POST',
+                data: {
+                'pk': productKey,
+                'name': name,
+                'price': price,
+                'mark': mark,
+                'validate': data,
+                'method': "productUpdate"
+            },
+            dataType: 'json',
+            success:function(){
+                requestProducts();
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+                requestProducts();
+            }
+
+            });
+        });
+    });
+}

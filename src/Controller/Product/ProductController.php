@@ -9,19 +9,18 @@ header("Content-Type: application/json");
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
-
 class ProductController{
 
     function productRegister(){
         
-        $name = $_POST["name"];
-        $price = $_POST["price"];
-        $mark = $_POST["mark"];
-        $validate = $_POST["validate"];
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $mark = $_POST['mark'];
+        $validate = $_POST['validate'];
 
 
         if (empty($name) || empty($price) || empty($mark) || empty($validate)) {
-            echo json_encode("Send values not found");
+            echo json_encode('Send values not found');
             exit;
         }
 
@@ -44,13 +43,38 @@ class ProductController{
 
     }
 
+    function productUpdate(){
+
+        foreach ($_POST as $input){
+            if ($input == null){
+                echo json_encode('Send values not found');
+                exit;
+            }
+        }
+
+
+        $product = new Products($_POST['name'],
+                                $_POST['price'],
+                                $_POST['mark'],
+                                $_POST['validate']
+        );
+
+        $product->setPrimaryKey($_POST['pk']);
+
+        $repository = new ProductsRepository();
+
+        $productList = $repository->update($product);
+        echo json_encode($productList);
+
+    }
+
 }
 
 
-if (isset($_POST["method"])){
-    $methodName = $_POST["method"];
+if (isset($_POST['method'])){
+    $methodName = $_POST['method'];
 }else{
-    echo die(json_encode("Method not found"));
+    echo die(json_encode('Method not found'));
 }
 
 

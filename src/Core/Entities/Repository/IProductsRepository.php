@@ -7,5 +7,5 @@ use Estoque\Core\Entities\Products\IProducts;
 
 interface IProductsRepository extends IRepository{
     function save(IProducts $products);
-    function upload(IProducts $products);
+    function update(IProducts $products);
 }
