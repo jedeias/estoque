@@ -99,7 +99,7 @@ class UserRepository implements IUserRepository{
         }
     }
 
-    function upload(IUser $user){
+    function  upload(IUser $user){
         try {
             $stmt = $this->sql->getConnect()->prepare("CALL updateUser(:pk, :name, :email, :password, :type)");
             if (!$stmt) {

@@ -14,6 +14,11 @@ if (empty($_SESSION) && session_id() !== "user") {
 $serializedUser = $session->get("serializeUser");
 $user = unserialize($serializedUser);
 
+if ($user->getType() == "Assistant"){
+   header("Refresh: 3 ../");
+   exit();
+}
+
 ?>
 
 <!DOCTYPE html>

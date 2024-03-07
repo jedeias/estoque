@@ -7,9 +7,7 @@ $(document).ready(function() {
         let userName = $('#name').val();
         let email = $('#email').val();
         let password = $('#password').val();
-
-        console.log(userName, email, password);
-
+        
         $.ajax({
             url: '/estoque/src/Controller/User/UserController.php',
             method: 'POST',
@@ -17,7 +15,7 @@ $(document).ready(function() {
                 'name': userName,
                 'email': email,
                 'password': password,
-                'method': "userUpdate",
+                'method': "userUpdateAuth",
             },
             success:function(response){
                 const status = document.createElement("div");

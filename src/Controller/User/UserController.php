@@ -40,7 +40,7 @@ class UserController{
 
     }
 
-    function userUpdate() {
+    function userUpdateAuth() {
         try{
             
             $session = new Session();
@@ -67,15 +67,47 @@ class UserController{
         }
     }
 
+    function userUpdate() {
+        try{
+            
+            $pk = $_POST["pkUser"];
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $type = $_POST["type"];
+            
+            if (empty($pk) || empty($email) || empty($password) || empty($type) || empty($name)) {
+                echo json_encode("Send values not found");
+                exit;
+            }
+
+            echo json_encode(($_POST));
+            
+            $user = new User($name, $email, $password, $type);
+            $user->setPrimaryKey($pk);
+            echo json_encode(print_r($user));
+            
+            $repository = new UserRepository();
+            
+            // $repository->upload($user);
+            $status = $repository->upload($user);
+            
+            echo json_encode(($status));
+        }catch(Exception $e){
+            echo json_encode("has a error: " . $e->getMessage());
+        }
+
+    }
+
     function userRequest(){
         try{
-
             
             $repository = new UserRepository();
             
             $userList = $repository->getAll();
             
             echo json_encode($userList);
+            
         }catch(Exception $e){
 
             echo json_encode("erro can't request user", $e->getMessage());
