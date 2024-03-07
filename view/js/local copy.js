@@ -108,16 +108,16 @@ function requestProducts(callback) {
 }
 
 
-let localData;
 let productsData;
-
-requestTable();
 requestProducts();
+
+let localData;
+requestTable();
 
 console.log('products', productsData);
 console.log('local', localData);
 
-function editTrigger(item){
+function editTrigger(pk){
 
     let update = document.getElementById('update');
 
