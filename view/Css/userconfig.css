@@ -55,13 +55,14 @@ button{
     border-radius: 10px;
     cursor: pointer;
     color: #fff;
-    box-shadow: 0.2rem 0.3rem 0.4rem #000;
+    
 }
 
 
 
 button:hover{
     background: rgb(183, 4, 183);
+    box-shadow: 0 0 30px #000;
 }
 
 h1{
