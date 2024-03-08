@@ -46,9 +46,13 @@ input:focus::-webkit-input-placeholder{
     color: transparent;
     transition: all .5s ease-in-out;
 }
+
+
+
+
 button{
     margin-top: 25px;
-    padding: 10px;
+    padding: 12px;
     width: 50%;
     background: purple;
     border: none;

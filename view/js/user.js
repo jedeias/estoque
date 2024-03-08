@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     var formulario = $('#POST');
 
@@ -83,7 +84,8 @@ function editTrigger(pkUser){
     editForm.className = 'update';
 
     let inputs = ['name', 'email', 'password', 'type'];
-
+  
+    
     pkUser = pkUser - 1;
 
     let userData = requestData[pkUser];
@@ -122,8 +124,11 @@ function editTrigger(pkUser){
 
         editForm.appendChild(label);
         editForm.appendChild(newInput);
+
+        
     });
 
+   
     let button = document.createElement('button');
     button.type = 'submit';
     button.setAttribute('form', 'update');
@@ -137,8 +142,14 @@ function editTrigger(pkUser){
         closeButton.className = 'fas fa-times'; // Classe do FontAwesome para um ícone de fechar
         closeButton.style.fontSize = '34px'
         closeButton.style.position = 'absolute'
-        closeButton.style.bottom = '85%'
-        closeButton.style.left = '80%'
+        closeButton.style.bottom = '96%'
+        closeButton.style.left = '95%'
+        closeButton.style.cursor = 'pointer'
+        closeButton.style.background='gray'
+        closeButton.style.borderRadius = '55%'
+        closeButton.style.padding = '9px'
+
+        
         closeButton.addEventListener('click', function() {
             document.body.removeChild(editForm);
         });
@@ -196,3 +207,8 @@ function upAwait(pkUser){
     });
 });
 }
+
+
+
+
+

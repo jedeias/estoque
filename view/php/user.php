@@ -31,8 +31,7 @@ if ($user->getType() == "Assistant"){
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    <title>User</title>
 </head>
-<body>
-
+<body class="bg">
       <header>
         
          <nav class="navbar">
@@ -100,7 +99,6 @@ if ($user->getType() == "Assistant"){
    <script src="../js/user.js"></script>
    <script src="../js/home.js"></script>
    <script src="../js/userInf.js"></script>
-
 </body>
 </html>
 
