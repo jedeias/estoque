@@ -21,6 +21,7 @@ class LocalController{
             echo json_encode("Send values not found");
             exit;
         }
+
         echo json_encode("recebido");
         
         $location = new Location($local, $product, $amount);
@@ -36,8 +37,35 @@ class LocalController{
     function localRequest() {
 
         $repository = new LocationRepository();
-        $userList = $repository->getAll();
-        echo json_encode($userList);
+        $local = $repository->getAll();
+        echo json_encode($local);
+
+    }
+    function localUpdate() {
+
+        foreach ($_POST as $input){
+            if ($input == null){
+                echo json_encode('Send values not found');
+                exit;
+            }
+        }
+        
+        
+        $pk = $_POST['pk'];
+        $local= $_POST['local'];
+        $product= $_POST['product'];
+        $amount= $_POST['amount'];
+        
+        $repository = new LocationRepository();
+        
+        $location = new Location($local, $product, $amount);
+        $location->setPrimaryKey($pk);
+
+        echo json_encode(print_r($location));
+        
+        $status = $repository->update($location);
+
+        echo json_encode($status);
 
     }
 

@@ -157,6 +157,34 @@ DELIMITER ;
 
 call updateProduct(10, "Fone Wireless", "35", "JBL", "2030-03-04");
 
+
+-- updateLocation
+
+DELIMITER $$
+
+CREATE PROCEDURE updateLocation(
+
+    IN _pk INT,
+    IN _local VARCHAR(255),
+    IN _pkProduct INT,
+    IN _amount INT
+)
+
+BEGIN
+    START TRANSACTION;
+
+    UPDATE location SET local = _local,
+                        fkProduct = _pkProduct,
+                        amount = _amount
+                        WHERE pkLocation = _pk;
+
+    COMMIT;
+        ROLLBACK;
+END $$
+DELIMITER ;
+
+call updateLocation(17, "matriz", 2, 81);
+
 -- insertLocation
 
 

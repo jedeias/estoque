@@ -74,7 +74,7 @@ class SalesRepository implements ISalesRepository{
         }
     }
 
-    public function upload(Isales $sales){
+    public function update(Isales $sales){
         
     }
 
@@ -86,7 +86,6 @@ class SalesRepository implements ISalesRepository{
     public function setProducts(ISales $products): self
     {
         $this->products = $products;
-
         return $this;
     }
 }

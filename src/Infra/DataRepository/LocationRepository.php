@@ -37,8 +37,25 @@ class LocationRepository implements ILocationRepository{
         }
     }
 
-    public function upload(ILocation $location){
+    public function update(ILocation $location){
+        try{
+            $stmt = $this->sql->getConnect()->prepare("CALL updateLocation(:pk, :name, :fkProduct, :amount)");
+            
+            $stmt->bindValue(':pk', $location->getPrimaryKey());
+            $stmt->bindValue(':name', $location->getLocal());
+            $stmt->bindValue(':fkProduct', $location->getProductsKey());
+            $stmt->bindValue(':amount', $location->getAmount());
 
+            $stmt->execute();
+            
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }catch(PDOException $e){
+            foreach( $e as $key){
+                echo $key;
+            }
+            return ['error' . $key];
+        }
     }
 
     public function getAll() : array {

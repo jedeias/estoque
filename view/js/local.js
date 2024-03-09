@@ -12,7 +12,7 @@ $(document).ready(function() {
         const amount = $('#amount').val();
         
         $.ajax({
-            url: '/estoque/src/Controller/Local/LocalRegister.php',
+            url: '/estoque/src/Controller/Local/LocalController.php',
             method: 'POST',
             data: {
                 local: local,
@@ -123,7 +123,7 @@ function editTrigger(pk) {
 
     let inputs = ['local', 'product', 'amount'];
 
-    let data = localData[pk - 1]; // Decrementando uma unidade para manipular a array corretamente
+    let data = localData[pk-1]; // Decrementando uma unidade para manipular a array corretamente
 
     inputs.forEach(function(element) {
         let label = document.createElement('label');
@@ -156,6 +156,7 @@ function editTrigger(pk) {
     
     let button = document.createElement('button');
     button.type = 'submit';
+    button.setAttribute('form', 'update');
     button.innerHTML = 'Send';
 
     // Criando o botão de fechar com um ícone
@@ -172,4 +173,50 @@ function editTrigger(pk) {
     editForm.appendChild(button);
     editForm.appendChild(closeButton);
     document.body.appendChild(editForm);
+
+    updateProducts(pk)
+}
+
+function updateProducts(pk) {
+
+    $(document).ready(function() {
+        var formulario = $('#update');
+        
+        formulario.submit(function(event) {
+            event.preventDefault();
+            
+            let local = $('#localUpdate').val();
+            let product = $('#productUpdate').val();
+            let amount = $('#amountUpdate').val();
+            
+            // pk++ // reimplementado o valor decrementado na função editTrigger para proder manipular a array
+            
+            console.log(pk, local, product, amount);
+            
+            $.ajax({
+                url: '/estoque/src/Controller/Local/LocalController.php',
+                method: 'POST',
+                data: {
+                'pk': pk,
+                'local': local,
+                'product': product,
+                'amount': amount,
+                'method': "localUpdate"
+            },
+            dataType: 'json',
+            success:function(){
+                requestTable();
+                requestProducts();  
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+                requestTable();
+                requestProducts();  
+            }
+
+        });
+        pkUser = pkUser -1 ;
+    });
+});
+    
 }

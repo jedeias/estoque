@@ -7,6 +7,6 @@ use Estoque\Core\Entities\Sales\ISales;
 interface ISalesRepository extends IRepository{
 
     function save(ISales $sales);
-    function upload(ISales $sales);
+    function update(ISales $sales);
 
 }
