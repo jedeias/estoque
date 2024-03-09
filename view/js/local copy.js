@@ -118,7 +118,7 @@ console.log('products', productsData);
 console.log('local', localData);
 
 function editTrigger(pk){
-
+    
     let update = document.getElementById('update');
 
     if (update){

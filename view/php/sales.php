@@ -1,8 +1,20 @@
-<!-- 
+<?php
 
-    tela onde fica o processo de registra uma compra e apresenta as compras anteriores
+require_once("../../vendor/autoload.php");
 
--->
+use Estoque\Core\UseCases\Session\Session;
+
+$session = new Session();
+
+if (empty($_SESSION) && session_id() !== "user") {
+    header("Location: ../");
+    exit();
+}
+
+$serializedUser = $session->get("serializeUser");
+$user = unserialize($serializedUser);
+
+?>
 
 <!DOCTYPE html>
  <html lang="Pt-Br">
@@ -12,10 +24,27 @@
     <title>Sales</title>
  </head>
  <body>
-    <h1>Olá Mundo!!</h1>
+      <form action="" method="post">
+      <label for="location">Local</label>
+      <select name="location" id="location"></select>
+         
+
+      <label for="product">Product</label>
+      <select name="product" id="product"></select>
+
+   
+      <label for="amount">Amount</label>
+      <input type="text" name="amount" id="amount">
+   
+      <label for="sales">Sales value</label>
+      <input type="text" name="sales" id="sales">
+
+      <button type="submit">Send</button>
+
+
+      </form>
  </body>
  </html>
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
- 

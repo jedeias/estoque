@@ -7,6 +7,6 @@ use Estoque\Core\Entities\Location\ILocation;
 interface ILocationRepository extends IRepository{
 
     function save(ILocation $location);
-    function upload(ILocation $location);
+    function update(ILocation $location);
 
 }

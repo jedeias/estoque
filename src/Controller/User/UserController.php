@@ -70,16 +70,19 @@ class UserController{
     function userUpdate() {
         try{
             
+            foreach ($_POST as $input){
+                if ($input == null){
+                    echo json_encode('Send values not found');
+                    exit;
+                }
+            }
+            
             $pk = $_POST["pkUser"];
             $name = $_POST["name"];
             $email = $_POST["email"];
             $password = $_POST["password"];
             $type = $_POST["type"];
             
-            if (empty($pk) || empty($email) || empty($password) || empty($type) || empty($name)) {
-                echo json_encode("Send values not found");
-                exit;
-            }
 
             echo json_encode(($_POST));
             
