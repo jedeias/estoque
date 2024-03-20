@@ -32,7 +32,7 @@ $user = unserialize($serializedUser);
         <header>
         
             <nav class="navbar">
-            <h1 class="title">Bem-Vindo à área de Matrix <?php echo $user->getName();?>!</h1>
+                <h1 class="title">Bem-Vindo à área de Matrix <?php echo $user->getName();?>!</h1>
                 <ul>
                     <li><a href='../exit.php'>Exit</a></li>
                     <li><a href="./logs.php">Logs</a></li>
@@ -41,6 +41,9 @@ $user = unserialize($serializedUser);
                     <li><a href="./sales.php">Sales</a></li>
                     <li><a href="./user.php">User</a></li>
                 </ul>
+
+                <button id = "toggle" class="button">Toggle</button>
+                <button id="refresh" class="button">refresh</button>
             </nav>
         </header>
 
@@ -94,6 +97,25 @@ $user = unserialize($serializedUser);
    <script src="../js/local.js"></script>
    <script src="../js/home.js"></script>
    <script src="../js/userInf.js"></script>
+   <script>
+        const toggle = document.getElementById("toggle");
+        const refresh = document.getElementById("refresh");
+        const theme = window.localStorage.getItem("theme");
+
+        if (theme === "dark") document.body.classList.add("dark");
+
+        toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        if (theme === "dark") {
+            window.localStorage.setItem("theme", "light");
+        } else window.localStorage.setItem("theme", "dark");
+        });
+
+        refresh.addEventListener("click", () => {
+        window.location.reload();
+        });
+
+   </script>
 
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
     $('#menu').click(function(){
@@ -26,9 +27,9 @@ $(document).ready(function(){
     });
 
 });
-const toggle = document.getElementById("toggle");
-const refresh = document.getElementById("refresh");
-const theme = window.localStorage.getItem("theme");
+var toggle = document.getElementById("toggle");
+var refresh = document.getElementById("refresh");
+var theme = window.localStorage.getItem("theme");
 
 if (theme === "dark") document.body.classList.add("dark");
 
@@ -42,4 +43,3 @@ toggle.addEventListener("click", () => {
 refresh.addEventListener("click", () => {
   window.location.reload();
 });
-

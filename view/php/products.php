@@ -40,6 +40,9 @@ $user = unserialize($serializedUser);
                     <li><a href="./sales.php">Sales</a></li>
                     <li><a href="./user.php">User</a></li>
                 </ul>
+
+                <button id = "toggle" class="button">Toggle</button>
+                <button id="refresh" class="button">refresh</button>
             </nav>
         </header>
 
